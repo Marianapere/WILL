@@ -11,8 +11,17 @@ function crearClasePersona() {
       // Inicializar las propiedades de la persona con los valores recibidos como argumento
 
       // Tu código aca:
+                        this.nombre = nombre,
+                        this.edad= edad,
+                        this.hobbies=hobbies,
+                        this.amigos= amigos
+
+                        
 
     }
+
+
+
 
     addFriend(nombre, edad) {
       // El método 'addFriend' recibe un string 'nombre' y un entero 'edad' y debe agregar un objeto:
@@ -20,6 +29,7 @@ function crearClasePersona() {
       // No debe retornar nada.
 
       // Tu código aca:
+                       this.amigos.push( { nombre: nombre, edad: edad})
 
     }
 
@@ -28,6 +38,7 @@ function crearClasePersona() {
       // No debe retornar nada.
 
       // Tu código aca:
+                        this.hobbies.push('comer')
 
     }
     getFriends() {
@@ -38,7 +49,14 @@ function crearClasePersona() {
       // persona.getFriends() debería devolver ['martin', 'toni']
 
       // Tu código aca:
+                        const arrayAmigos=[];
 
+                        for (const elem of this.amigos) {
+                           arrayAmigos.push(elem.nombre)
+                            
+                          }
+                        
+                        return arrayAmigos
     }
 
     getHobbies() {
@@ -47,6 +65,7 @@ function crearClasePersona() {
       // persona.getHobbies() debe devolver ['correr', 'dormir', 'nadar']
 
       // Tu código aca:
+                        return this.hobbies
 
     }
 
@@ -66,12 +85,29 @@ function crearClasePersona() {
       // persona.getPromedioEdad() debería devolver 29 ya que (33 + 25) / 2 = 29
 
       // Tu código aca:
+                      var sum =0
+
+                      for (const elem of this.amigos) {
+                           sum += elem.edad
+                      }
+                       
+                      return sum/this.amigos.length
 
     }
   };
 
   return Persona;
 }
+
+const Persona = crearClasePersona();
+const Juana = new Persona ('Juana',25,['futbol','basquet','squash'], [{nombre: 'toni', edad: 33 }, {nombre: 'Emi',edad: 25 }])
+console.log(Juana)
+console.log(Juana.addFriend('Majo',32))
+console.log(Juana)
+
+console.log( Juana.getFriends() )
+console.log(Juana.getHobbies())
+console.log(Juana.getPromedioEdad())
 
 // No modifiques nada debajo de esta linea //
 
